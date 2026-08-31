@@ -13,3 +13,8 @@
   --color-secondry:#ed40b1;
   --color-text:#242424;
 }
+
+@utility container-center{
+    width:90%;
+    margin-inline:auto;
+  }
