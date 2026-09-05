@@ -31,11 +31,11 @@ const Navbar = () => {
   const Links = [
     {
       Name: "Home",
-      Link: "/home",
+      Link: "/",
     },
     {
-      Name: "Accesories",
-      Link: "/accesories",
+      Name: "Accessories",
+      Link: "/accessories",
     },
     {
       Name: "About",
@@ -78,7 +78,7 @@ const Navbar = () => {
           </li>
           <IoMdArrowDropup className="group-hover:rotate-180 dark:text-white group-hover:text-primary transition-all duration-300 cursor-pointer" />
           <ul
-            className={`absolute z-50 top-10 -left-7 bg-linear-to-b p-2 from-primary to-secondry border-2 border-gray-600/70 dark:border-2 dark:border-white  rounded-lg  ${isCategoriesOpen ? "opacity-100 h-fit" : "h-0 opacity-0 pointer-events-none"}  transition-all duration-300 ease-in-out`}
+            className={`absolute z-50 top-10 -left-7 bg-linear-to-b p-2 from-primary to-secondry border-2 border-gray-600/70 dark:border-2 dark:border-white  rounded-lg overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#696970] [&::-webkit-scrollbar-thumb]:rounded-full  ${isCategoriesOpen ? "opacity-100 h-100" : "h-0 opacity-0 pointer-events-none"}  transition-all duration-300 ease-in-out`}
           >
             {categories.map((item, key) => (
               <li

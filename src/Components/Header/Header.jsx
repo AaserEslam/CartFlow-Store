@@ -10,7 +10,7 @@ const Header = () => {
     <header className=" transition-all duration-300 container-center pb-8">
       <div className="pt-6 flex max-md:justify-between items-center gap-4 md:gap-10">
         <div>
-          <Link to="/home">
+          <Link to="/">
             <h2 className="text-lg md:text-2xl font-semibold dark:text-white">
               Cart
               <span className="bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent">
