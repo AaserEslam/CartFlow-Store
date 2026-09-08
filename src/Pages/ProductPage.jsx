@@ -10,6 +10,8 @@ const ProductPage = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loadingRelatedProducts, setLoadingRelatedProducts] = useState(true);
   const { id } = useParams();
+  console.log(id);
+  
 
 
 
@@ -63,7 +65,7 @@ const ProductPage = () => {
     <div className="min-h-screen">
       <div className="container-center md:grid grid-cols-2 pt-4 pb-8 items-center">
         {/* Images Section */}
-        <div className="w-100 h-120 max-md:mx-auto items-center relative">
+        <div className="w-100 h-130 max-md:mx-auto items-center relative">
           <img id="big"
             className="w-full h-100 object-cover"
             src={

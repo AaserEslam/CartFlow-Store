@@ -83,12 +83,13 @@ const Navbar = () => {
             className={`absolute z-50 top-10 -left-7 bg-linear-to-b p-2 from-primary to-secondry border-2 border-gray-600/70 dark:border-2 dark:border-white  rounded-lg overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#696970] [&::-webkit-scrollbar-thumb]:rounded-full  ${isCategoriesOpen ? "opacity-100 h-100" : "h-0 opacity-0 pointer-events-none"}  transition-all duration-300 ease-in-out`}
           >
             {categories.map((item, key) => (
-              <li
+              <Link key={key} to={`/products/category/${item}`}>
+                            <li
                 className="p-4 transition-all capitalize duration-300 ease-in-out my-2 rounded-lg text-white w-34 font-normal cursor-pointer bg-gray-200/40 hover:tracking-wider"
-                key={key}
+                
               >
                 {item.replace("-"," ")}
-              </li>
+              </li></Link>
             ))}
           </ul>
         </div>

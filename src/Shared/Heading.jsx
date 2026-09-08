@@ -4,7 +4,7 @@ const Heading = ({title , description}) => {
   return (
     <div className='mt-12 container-center'>
       <div className='p-3 flex items-center justify-center'>
-            <h2 className='font-semibold text-2xl capitalize md:text-3xl bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent'>{title.replace("-" , " ")}</h2>
+            <h2 className='font-semibold text-2xl capitalize md:text-3xl bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent'>{title?.replace("-" , " ")}</h2>
       </div>
       <div>
         <p className='p-1 flex items-center dark:text-white justify-center text-sm md:text-[15px] tracking-wide text-gray-600 font-semibold '>{description}</p>
