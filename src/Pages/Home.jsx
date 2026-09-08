@@ -10,11 +10,11 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    "clothes",
-    "electronics",
+    "sports-accessories",
+    "laptops",
     "furniture",
-    "shoes",
-    "miscellaneous"
+    "mens-shoes",
+    "womens-bags"
   ];
 
   const paragraphes = [
@@ -31,19 +31,12 @@ const Home = () => {
         const results = await Promise.all(
           categories.map(async (category) => {
             const res = await axios.get(
-              `https://api.escuelajs.co/api/v1/products/?categorySlug=${category}`,
+              `https://dummyjson.com/products/category/${category}`,
             );
 
-            const cleanProducts = res.data.filter((item) => {
-              const hasValidTitle = item?.title && typeof item.title === "string";
-              const isJunkTitle = hasValidTitle && item.title.toLowerCase().startsWith("title");
               
-              const firstImg = item?.images?.[0] || "";
-              const isPlaceholderImg = typeof firstImg === "string" && firstImg.includes("600x400");
               
-              return hasValidTitle && !isJunkTitle && !isPlaceholderImg
-            })
-            return { [category]: cleanProducts };
+            return { [category]: res.data.products };
           }),
                       
         );
@@ -58,6 +51,9 @@ const Home = () => {
     };
     fetchProducts();
   }, []);
+
+  console.log(products);
+  
 
   return (
     <div className="min-h-screen max-h-full">

@@ -8,6 +8,11 @@
     font-family: "Outfit", sans-serif;
 }
 
+html{
+  min-height: 100vh;
+  max-height: 100%;
+}
+
 @theme{
   --color-primary:#8b40ed;
   --color-secondry:#ed40b1;

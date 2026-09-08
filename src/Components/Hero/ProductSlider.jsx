@@ -20,6 +20,9 @@ import Headphones from "../../Images/Headphones.png";
 import TShirt from "../../Images/TShirt.png";
 
 const ProductSlider = ({ data }) => {
+
+  console.log(data);
+  
   return (
     <div className="container-center h-80 my-6">
       <div className="h-full max-md:hidden">
@@ -37,7 +40,7 @@ const ProductSlider = ({ data }) => {
           //   pagination={{ clickable: true }}
           //   scrollbar={{ draggable: true }}
         >
-          {data.map((item, key) => (
+          {data?.map((item, key) => (
             <SwiperSlide className="p-6 ">
               <CardProducts key={key} item={item} />
             </SwiperSlide>
@@ -55,7 +58,7 @@ const ProductSlider = ({ data }) => {
           //   pagination={{ clickable: true }}
           //   scrollbar={{ draggable: true }}
         >
-          {data.map((item, key) => (
+          {data?.map((item, key) => (
             <SwiperSlide className="p-6 ">
               <CardProducts key={key} item={item} />
             </SwiperSlide>

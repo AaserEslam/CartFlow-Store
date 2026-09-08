@@ -15,7 +15,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        axios.get("https://api.escuelajs.co/api/v1/categories")
+        axios.get("https://dummyjson.com/products/category-list")
           .then((res) => {
           setCategories(res.data);
           setLoading(false);          
@@ -26,7 +26,9 @@ const Navbar = () => {
     };
 
     fetchCategories();
-  });
+  } , []);
+
+  
 
   const Links = [
     {
@@ -82,10 +84,10 @@ const Navbar = () => {
           >
             {categories.map((item, key) => (
               <li
-                className="p-4 transition-all duration-300 ease-in-out my-2 rounded-lg text-white w-34 font-normal cursor-pointer bg-gray-200/40 hover:tracking-wider"
+                className="p-4 transition-all capitalize duration-300 ease-in-out my-2 rounded-lg text-white w-34 font-normal cursor-pointer bg-gray-200/40 hover:tracking-wider"
                 key={key}
               >
-                {item.name}
+                {item.replace("-"," ")}
               </li>
             ))}
           </ul>

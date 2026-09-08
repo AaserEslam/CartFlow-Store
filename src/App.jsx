@@ -11,12 +11,13 @@ const App = () => {
 
   const {id} = useParams()
 
+
   return (
-    <div className="min-h-screen max-h-full w-full dark:bg-gray-800 transition-all duration-300">
+    <div className="min-h-screen w-full dark:bg-gray-800 transition-all duration-300">
         <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path={`/products/:${id}`} element={<ProductPage />} />
+          <Route path={`/products/:id`} element={<ProductPage />} />
           <Route path={`/about`} element={<About />} />
           <Route path={`/contact`} element={<Contact />} />
         </Routes>
