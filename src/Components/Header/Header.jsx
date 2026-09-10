@@ -8,7 +8,8 @@ import { CartContext } from "../CartProvider/CartContext";
 
 const Header = () => {
 
-      const { cartItems, addToCart } = useContext(CartContext);
+        const { cartItems, addToCart  , addToFav , favouriteItems} = useContext(CartContext);
+      
 
 
   return (
@@ -53,9 +54,9 @@ const Header = () => {
                       <div className="flex items-center relative cursor-pointer"><FaCartShopping className="text-[20px] text-primary" /><span className="absolute bottom-3.5 left-3 bg-linear-to-tr from-primary to-secondry w-1 h-1 flex justify-center items-center p-2.5 text-[12px] text-white rounded-full">{cartItems?.length}</span></div>
 
           </Link>
-          <Link to="/favoutite">
+          <Link to="/favourite">
             
-          <div className="flex items-center relative cursor-pointer"><FaRegHeart className="text-[20px] text-secondry"/><span className="absolute bottom-3.5 left-3 bg-linear-to-tr from-primary to-secondry w-1 h-1 flex justify-center items-center p-2.5 text-[12px] text-white rounded-full">4</span></div>
+          <div className="flex items-center relative cursor-pointer"><FaRegHeart className="text-[20px] text-secondry"/><span className="absolute bottom-3.5 left-3 bg-linear-to-tr from-primary to-secondry w-1 h-1 flex justify-center items-center p-2.5 text-[12px] text-white rounded-full">{favouriteItems?.length}</span></div>
           </Link>
         </div>
         {/* Theme */}

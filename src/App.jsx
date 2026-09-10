@@ -9,6 +9,7 @@ import CategoryPage from "./Pages/CategoryPage";
 import axios from "axios";
 import CartPage from "./Pages/CartPage";
 import { Toaster } from "react-hot-toast";
+import FavouritePage from "./Pages/FavouritePage";
 
 const App = () => {
   const [categories, setCategories] = useState([]);
@@ -56,6 +57,7 @@ const App = () => {
           element={<CategoryPage />}
         />
         <Route path={`/cart`} element={<CartPage />} />
+        <Route path={`/favourite`} element={<FavouritePage />} />
 
         <Route path={`/about`} element={<About />} />
         <Route path={`/contact`} element={<Contact />} />

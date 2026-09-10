@@ -5,8 +5,9 @@ import { CartContext } from "../CartProvider/CartContext";
 import toast from "react-hot-toast";
 
 const CardProducts = ({ item }) => {
-  const { cartItems, addToCart } = useContext(CartContext);
+  const { cartItems, addToCart  , addToFav , favouriteItems} = useContext(CartContext);
   const isInCart = cartItems?.some((i) => i.id === item.id);
+  const isInFav = favouriteItems?.some((i) => i.id === item.id);
 
   const handleAddToCart = () => {
     addToCart(item)
@@ -23,6 +24,27 @@ const CardProducts = ({ item }) => {
         </div>
         <div>
           <Link to="/cart"><button className="mt-4 scale-90 hover:scale-100 cursor-pointer text-md rounded-full bg-linear-to-r from-primary to-secondry text-white px-4 py-2 transition-all duration-300">View In Cart</button></Link>
+        </div>
+        </div>
+      </div>
+      ,{duration:2500}
+    )
+  }
+  const handleAddToFav = () => {
+    addToFav(item)
+
+    toast.success(
+      <div className="flex justify-center items-center gap-4 ">
+        <div className="h-20 w-20">
+          <img src={item.images[0]} alt="" className="w-full h-full"/>
+        </div>
+        <div>
+                  <div>
+          <h1 className="text-md font-semibold bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent">{item.title}</h1>
+          <p className="mt-4 font-semibold text-sm dark:text-gray-300">Added To Favourites</p>
+        </div>
+        <div>
+          <Link to="/favourite"><button className="mt-4 scale-90 hover:scale-100 cursor-pointer text-md rounded-full bg-linear-to-r from-primary to-secondry text-white px-4 py-2 transition-all duration-300">View In Favourites</button></Link>
         </div>
         </div>
       </div>
@@ -64,11 +86,8 @@ const CardProducts = ({ item }) => {
           />
         </span>
         <span
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-          className="border-2 border-primary  p-2 bg-primary rounded-full active:scale-90 hover:shadow-[0px_0px_10px_6px_#ed40b1] transition-all duration-300 cursor-pointer"
+          onClick={handleAddToFav}
+          className={`border-2 border-primary  p-2 bg-primary rounded-full active:scale-90 hover:shadow-[0px_0px_10px_6px_#ed40b1] transition-all duration-300 cursor-pointer ${isInFav ? "bg-white pointer-events-none" : ""}`}
         >
           <FaHeart className="text-secondry text-[22px]" />
         </span>
