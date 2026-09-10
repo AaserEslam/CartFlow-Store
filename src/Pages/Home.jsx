@@ -52,7 +52,6 @@ const Home = () => {
     fetchProducts();
   }, []);
 
-  console.log(products);
   
 
   return (

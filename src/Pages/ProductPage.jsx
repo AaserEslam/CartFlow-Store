@@ -1,8 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import ProductSlider from "../Components/Hero/ProductSlider";
 import Heading from "../Shared/Heading";
+import { CartContext } from "../Components/CartProvider/CartContext";
+import toast from "react-hot-toast";
 
 const ProductPage = () => {
   const [loading, setLoading] = useState(true);
@@ -10,8 +12,34 @@ const ProductPage = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loadingRelatedProducts, setLoadingRelatedProducts] = useState(true);
   const { id } = useParams();
-  console.log(id);
+
+        const { cartItems, addToCart } = useContext(CartContext);
+          const isInCart = cartItems?.some((i) => i.id === product.id);
+
   
+
+            const handleAddToCart = () => {
+              addToCart(product)
+          
+              toast.success(
+                <div className="flex justify-center items-center gap-4 ">
+                  <div className="h-20 w-20">
+                    <img src={product.images[0]} alt="" className="w-full h-full"/>
+                  </div>
+                  <div>
+                            <div>
+                    <h1 className="text-md font-semibold bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent">{product.title}</h1>
+                    <p className="mt-4 font-semibold text-sm dark:text-gray-300">Added To Cart</p>
+                  </div>
+                  <div>
+                    <Link to="/cart"><button className="mt-4 scale-90 hover:scale-100 cursor-pointer text-md rounded-full bg-linear-to-r from-primary to-secondry text-white px-4 py-2 transition-all duration-300">View In Cart</button></Link>
+                  </div>
+                  </div>
+                </div>
+                ,{duration:2500}
+              )
+            }
+
 
 
 
@@ -39,7 +67,6 @@ const ProductPage = () => {
     fetchProducts();
   }, [id]);
 
-  console.log(relatedProducts);
 
   useEffect(() => {
     const fetchRelatedProducts = async () => {
@@ -124,8 +151,9 @@ const ProductPage = () => {
             </div>
             <div>
               <button
-                className="mt-3 bg-linear-to-r from-primary to-secondry text-white py-2 px-4 rounded-full scale-110 cursor-pointer transition-all duration-300 hover:scale-120"
+                className={`mt-3  py-2 px-4 rounded-full scale-110 cursor-pointer transition-all duration-300 hover:scale-120 ${isInCart ? ' border-2 border-primary bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent font-semibold pointer-events-none' : 'bg-linear-to-r from-primary to-secondry text-white'}`}
                 type="submit"
+                onClick={handleAddToCart}
               >
                 Add To Cart
               </button>

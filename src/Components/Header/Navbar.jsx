@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import { BsArrowBarDown } from "react-icons/bs";
 import { IoMdArrowDropup } from "react-icons/io";
 import axios from "axios";
+import { CartContext } from "../CartProvider/CartContext";
 
 const Navbar = () => {
   const location = useLocation();
@@ -11,6 +12,8 @@ const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+
+  
 
   useEffect(() => {
     const fetchCategories = async () => {
