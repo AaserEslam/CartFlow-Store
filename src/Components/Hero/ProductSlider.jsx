@@ -20,8 +20,6 @@ import Headphones from "../../Images/Headphones.png";
 import TShirt from "../../Images/TShirt.png";
 
 const ProductSlider = ({ data }) => {
-
-  
   return (
     <div className="container-center h-80 my-6">
       <div className="h-full max-md:hidden">

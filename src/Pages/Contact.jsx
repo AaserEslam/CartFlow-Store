@@ -1,10 +1,12 @@
 import React from 'react'
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import PageTransition from '../Shared/PageTransition';
 
 const Contact = () => {
   return (
     
-    <div className="min-h-screen  dark:bg-gray-800 text-white py-12 px-6 transition-all duration-300">
+    <PageTransition>
+          <div className="min-h-screen  dark:bg-gray-800 text-white py-12 px-6 transition-all duration-300">
       <div className="max-w-5xl mx-auto text-center mb-12 w-fit">
         <h1 className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-linear-to-r from-primary to-secondry">
           Get In Touch
@@ -75,6 +77,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </PageTransition>
   
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaAward, FaHeadset, FaShieldAlt, FaShippingFast } from 'react-icons/fa';
+import PageTransition from '../Shared/PageTransition';
 
 const About = () => {
 const features = [
@@ -10,7 +11,8 @@ const features = [
   ];
 
   return (
-    <div className="min-h-screen dark:bg-gray-800 text-white py-12 px-6 transition-all duration-300">
+    <PageTransition>
+          <div className="min-h-screen dark:bg-gray-800 text-white py-12 px-6 transition-all duration-300">
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
         <div>
@@ -41,6 +43,7 @@ const features = [
         ))}
       </div>
     </div>
+    </PageTransition>
   );
 }
 
