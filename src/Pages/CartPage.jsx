@@ -6,7 +6,7 @@ import { IoPricetagOutline, IoPricetagsOutline } from "react-icons/io5";
 const CartPage = () => {
   const { cartItems, addToCart , removeFromCart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
 
-  const total = cartItems?.reduce((acc , item) => +acc + +item.price*item.quantity , 0)
+  const total = cartItems?.reduce((acc , item) => +acc + +item.price * +item.quantity , 0)
 
 
   return (
@@ -78,7 +78,7 @@ const CartPage = () => {
             <div className="flex items-center justify-between text-lg ">
               <p className="text-gray-500 dark:text-gray-300">Subtotal :-</p>
               <span className="font-semibold text-text dark:text-white">
-                $ {total}
+                $ {total.toFixed(2)}
               </span>
             </div>
             <div className="flex items-center justify-between text-lg ">
@@ -94,7 +94,7 @@ const CartPage = () => {
             <div className="flex items-center justify-between text-lg mt-6">
               <p className="text-gray-500 dark:text-gray-300">Total :-</p>
               <span className="font-semibold text-text dark:text-white">
-                $ {total}
+                $ {total.toFixed(2)}
               </span>
             </div>
             <div>

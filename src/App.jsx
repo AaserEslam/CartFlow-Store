@@ -10,6 +10,7 @@ import axios from "axios";
 import CartPage from "./Pages/CartPage";
 import { Toaster } from "react-hot-toast";
 import FavouritePage from "./Pages/FavouritePage";
+import PageTransition from "./Shared/PageTransition";
 
 const App = () => {
   const [categories, setCategories] = useState([]);
@@ -39,29 +40,39 @@ const App = () => {
     <div className="min-h-screen w-full dark:bg-gray-800 transition-all duration-300">
       <Header />
       <Toaster
-      toastOptions={{
-        className:'!bg-white dark:!bg-gray-500',
-        iconTheme:{
-          primary:'#8b40ed'
-        }
-      }}
-  position="bottom-right" 
-  reverseOrder={false}
-/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path={`/products/:id`} element={<ProductPage />} />
+        toastOptions={{
+          success: {
+            className: "!bg-white dark:!bg-gray-500",
+            iconTheme: {
+              primary: "#8b40ed",
+            },
+          },
 
-        <Route
-          path={`/products/category/:category`}
-          element={<CategoryPage />}
-        />
-        <Route path={`/cart`} element={<CartPage />} />
-        <Route path={`/favourite`} element={<FavouritePage />} />
+          error: {
+            iconTheme: {
+              primary: "#ed40b1",
+            },
+          },
+        }}
+        position="bottom-right"
+        reverseOrder={false}
+      />
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path={`/products/:id`} element={<ProductPage />} />
 
-        <Route path={`/about`} element={<About />} />
-        <Route path={`/contact`} element={<Contact />} />
-      </Routes>
+          <Route
+            path={`/products/category/:category`}
+            element={<CategoryPage />}
+          />
+          <Route path={`/cart`} element={<CartPage />} />
+          <Route path={`/favourite`} element={<FavouritePage />} />
+
+          <Route path={`/about`} element={<About />} />
+          <Route path={`/contact`} element={<Contact />} />
+        </Routes>
+      </PageTransition>
     </div>
   );
 };

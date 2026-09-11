@@ -7,6 +7,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { CartContext } from "../CartProvider/CartContext";
 import SearchBar from "./SearchBar";
 import MobileSearchBar from "./MobileSearchBar";
+import PageTransition from "../../Shared/PageTransition";
 
 const Header = () => {
 
@@ -14,8 +15,8 @@ const Header = () => {
       
 
 
-  return (
-    <header className=" transition-all duration-300 container-center pb-8">
+  return (<PageTransition>
+        <header className=" transition-all duration-300 container-center pb-8">
       <div className="pt-6 flex max-md:justify-between items-center gap-4 md:gap-10">
         <div>
           <Link to="/">
@@ -48,6 +49,7 @@ const Header = () => {
         <ThemeMode />
       </div>
     </header>
+  </PageTransition>
   );
 };
 

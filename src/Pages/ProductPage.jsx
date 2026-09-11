@@ -5,6 +5,7 @@ import ProductSlider from "../Components/Hero/ProductSlider";
 import Heading from "../Shared/Heading";
 import { CartContext } from "../Components/CartProvider/CartContext";
 import toast from "react-hot-toast";
+import PageTransition from "../Shared/PageTransition";
 
 const ProductPage = () => {
   const [loading, setLoading] = useState(true);
@@ -89,7 +90,8 @@ const ProductPage = () => {
   }, [product.category]);
 
   return (
-    <div className="min-h-screen">
+<PageTransition>
+      <div className="min-h-screen">
       <div className="container-center md:grid grid-cols-2 pt-4 pb-8 items-center">
         {/* Images Section */}
         <div className="w-100 h-130 max-md:mx-auto items-center relative">
@@ -166,6 +168,7 @@ const ProductPage = () => {
         <ProductSlider data={relatedProducts.products} />
       </div>
     </div>
+</PageTransition>
   );
 };
 

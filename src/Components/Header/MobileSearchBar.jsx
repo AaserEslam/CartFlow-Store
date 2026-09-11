@@ -46,7 +46,7 @@ const MobileSearchBar = () => {
         <FaSearch className="text-text dark:text-white hover:text-secondry transition-all duration-300 cursor-pointer absolute left-53 md:left-full md:-translate-x-8" />
       </form>
       <div
-        className={`absolute border border-t-0 rounded-lg overflow-y-auto border-[#222] dark:border-gray-300 bg-white/50 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-linear-to-b [&::-webkit-scrollbar-thumb]:from-primary [&::-webkit-scrollbar-thumb]:to-secondry  [&::-webkit-scrollbar-thumb]:rounded-full dark:bg-gray-500/60 z-50 w-59.5 p-2 transition-all duration-300 ${searchInput === "" ? "hidden h-0 opacity-0" : "opacity-100 h-85 rounded-tl-none rounded-tr-none border border-[#222]"}`}
+        className={`absolute border border-t-0 rounded-lg overflow-y-auto border-[#222] dark:border-gray-300 bg-white/50 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-linear-to-b [&::-webkit-scrollbar-thumb]:from-primary [&::-webkit-scrollbar-thumb]:to-secondry  [&::-webkit-scrollbar-thumb]:rounded-full dark:bg-gray-500/60 z-50 w-59.5 p-2 ${searchInput === "" ? "hidden h-0 opacity-0" : "opacity-100 h-85 rounded-tl-none rounded-tr-none border border-[#222]"} transition-all duration-300`}
       >
         <ul>
           {products.map((item, key) => (
