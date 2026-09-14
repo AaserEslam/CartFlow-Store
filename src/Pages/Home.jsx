@@ -5,6 +5,7 @@ import CardProducts from "../Components/Hero/CardProducts";
 import Heading from "../Shared/Heading";
 import axios from "axios";
 import ProductSliderloading from "../Components/Hero/ProductSliderloading";
+import ScrollTop from "../Shared/ScrollTop";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -27,7 +28,7 @@ const Home = () => {
   ];
 
   const titles = [
-        "sports-accessories",
+        "sport's-accessories",
     "laptops",
     "furniture",
     "men's-shoes",
@@ -59,7 +60,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen max-h-full">
+    <div className="min-h-screen max-h-full relative">
       <HeroSlider />
 
       {loading ? (
@@ -77,6 +78,8 @@ const Home = () => {
         ))
         
       )}
+
+      <ScrollTop/>
     </div>
   );
 };

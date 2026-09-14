@@ -49,6 +49,7 @@ const App = () => {
           },
 
           error: {
+            className: "!bg-white dark:!bg-gray-500",
             iconTheme: {
               primary: "#ed40b1",
             },
