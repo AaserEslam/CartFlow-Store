@@ -6,6 +6,8 @@ import Heading from "../Shared/Heading";
 import axios from "axios";
 import ProductSliderloading from "../Components/Hero/ProductSliderloading";
 import ScrollTop from "../Shared/ScrollTop";
+import Advertisment from "../Components/Hero/Advertisment";
+import Advices from "../Components/Hero/Advices";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -78,6 +80,9 @@ const Home = () => {
         ))
         
       )}
+
+      <Advertisment/>
+      <Advices/>
 
       <ScrollTop/>
     </div>
