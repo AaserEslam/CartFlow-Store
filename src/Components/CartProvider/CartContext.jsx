@@ -55,6 +55,10 @@ export default function CartProvider({ children }) {
     setFavouriteItems((p) => p.filter((item) => item.id !== id));
   };
 
+  const deleteAll = () => {
+    setCartItems([])
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -66,7 +70,7 @@ export default function CartProvider({ children }) {
         addToFav,
         favouriteItems,
         removeFromFav,
-        setFavouriteItems,
+        setFavouriteItems,deleteAll
       }}
     >
       {children}

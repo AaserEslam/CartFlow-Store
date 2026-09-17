@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import { BsArrowBarDown } from "react-icons/bs";
 import { IoMdArrowDropup } from "react-icons/io";
@@ -13,7 +13,6 @@ const Navbar = () => {
   const [loading, setLoading] = useState(true);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
 
-  
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -31,16 +30,16 @@ const Navbar = () => {
     fetchCategories();
   } , []);
 
+  useEffect(() => {
+    setIsCategoriesOpen(false)
+ } , [location])
+
   
 
   const Links = [
     {
       Name: "Home",
       Link: "/",
-    },
-    {
-      Name: "Accessories",
-      Link: "/accessories",
     },
     {
       Name: "About",

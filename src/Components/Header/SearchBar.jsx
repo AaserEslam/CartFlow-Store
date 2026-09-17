@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handleSearchBox = (e) => {
     setSearchInput(e.target.value);
@@ -32,19 +34,37 @@ const SearchBar = () => {
   }, [searchInput]);
 
 
+  useEffect(() => {
+      setSearchInput("");
+  } , [location])
+
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if(searchInput){
+      navigate(`/search?q=${encodeURIComponent(searchInput)}`)
+    }
+  }
+
+
+  
+
+
   return (
-    <div className="hidden md:block w-90 relative group">
-      <form action="" className="flex items-center  ">
+    <div className="hidden md:block w-114 relative group">
+      <form onSubmit={handleSearch} className="flex items-center">
         <input
+        value={searchInput}
           onChange={handleSearchBox}
           type="text"
           placeholder="Search ... "
-          className={`outline-0 border dark:text-white dark:placeholder-white border-[#222] dark:border-gray-300 rounded-full px-4 py-2 w-0 group-hover:w-full opacity-0 group-hover:opacity-100 transition-all duration-300 ${searchInput === "" ? "" : "rounded-br-none rounded-bl-none rounded-tl-lg rounded-tr-lg border border-[#222] opacity-100 w-full"}`}
+          className={`outline-0 border dark:text-white dark:placeholder-white border-[#222] dark:border-gray-300 px-4 py-2 w-0 group-hover:w-full opacity-0 group-hover:opacity-100 transition-all duration-300 ${searchInput === "" || products.length === 0 ? "rounded-full" : "rounded-br-none rounded-bl-none rounded-tl-lg rounded-tr-lg border border-[#222] opacity-100 w-full"}`}
         />
-        <FaSearch className="text-text dark:text-white hover:text-secondry transition-all duration-300 cursor-pointer absolute left-full -translate-x-8" />
+        <button className="flex items-center" type="submit"><FaSearch className="text-text dark:text-white hover:text-secondry transition-all duration-300 cursor-pointer absolute left-full -translate-x-8" /></button>
       </form>
       <div
-        className={`absolute border border-t-0 rounded-lg overflow-y-auto border-[#222] dark:border-gray-300 bg-white/50 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-linear-to-b [&::-webkit-scrollbar-thumb]:from-primary [&::-webkit-scrollbar-thumb]:to-secondry  [&::-webkit-scrollbar-thumb]:rounded-full dark:bg-gray-500/60 z-50 w-88.5 p-2 transition-all duration-300 ${searchInput === "" ? "hidden h-0 opacity-0" : "opacity-100 h-95 rounded-tl-none rounded-tr-none border border-[#222]"}`}
+        className={`absolute border border-t-0 rounded-lg overflow-y-auto border-[#222] dark:border-gray-300 bg-white/50 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-linear-to-b [&::-webkit-scrollbar-thumb]:from-primary [&::-webkit-scrollbar-thumb]:to-secondry  [&::-webkit-scrollbar-thumb]:rounded-full dark:bg-gray-500/60 z-50 w-114 p-2 transition-all duration-300 ${searchInput === "" ? "hidden h-0 opacity-0" : "opacity-100 h-95 rounded-tl-none rounded-tr-none border border-[#222]"} ${products.length === 0 ? 'hidden h-0 opacity-0' : ''}`}
       >
         <ul>
           {products.map((item, key) => (

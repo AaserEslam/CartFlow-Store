@@ -4,7 +4,7 @@ import { FaTrash } from "react-icons/fa";
 import { IoPricetagOutline, IoPricetagsOutline } from "react-icons/io5";
 
 const CartPage = () => {
-  const { cartItems, addToCart , removeFromCart , increaseQuantity , decreaseQuantity} = useContext(CartContext);
+  const { cartItems, addToCart , removeFromCart , deleteAll , increaseQuantity , decreaseQuantity} = useContext(CartContext);
 
   const total = cartItems?.reduce((acc , item) => +acc + +item.price * +item.quantity , 0)
 
@@ -69,11 +69,15 @@ const CartPage = () => {
         )}
         {/* Order Summary */}
         <div className="bg-transparent border h-fit border-gray-300 p-4 rounded-lg">
-          <div>
+          <div className="flex items-center justify-between">
             <h1 className="w-fit bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent  font-semibold text-2xl">
               Order Summary
             </h1>
-          </div>
+            {cartItems.length > 1 ?(
+                          <button onClick={() => deleteAll()} className="bg-linear-to-r from-primary to-secondry text-white py-1.5 px-3 rounded-full transition-all duration-300 cursor-pointer hover:tracking-widest w-30">Delete All</button>
+
+            )  : ''}
+            </div>
           <div className="mt-10">
             <div className="flex items-center justify-between text-lg ">
               <p className="text-gray-500 dark:text-gray-300">Subtotal :-</p>

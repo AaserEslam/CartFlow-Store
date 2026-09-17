@@ -11,6 +11,7 @@ import CartPage from "./Pages/CartPage";
 import { Toaster } from "react-hot-toast";
 import FavouritePage from "./Pages/FavouritePage";
 import PageTransition from "./Shared/PageTransition";
+import SearchResult from "./Components/Header/SearchResult";
 
 const App = () => {
   const [categories, setCategories] = useState([]);
@@ -71,6 +72,7 @@ const App = () => {
           <Route path={`/favourite`} element={<FavouritePage />} />
 
           <Route path={`/about`} element={<About />} />
+          <Route path={`/search`} element={<SearchResult />} />
           <Route path={`/contact`} element={<Contact />} />
         </Routes>
       </PageTransition>

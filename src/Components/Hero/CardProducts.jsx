@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FaCartPlus, FaCheck, FaHeart, FaShare, FaStar } from "react-icons/fa";
+import { FaCartPlus, FaCheck, FaHeart, FaRegHeart, FaShare, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CartContext } from "../CartProvider/CartContext";
 import toast from "react-hot-toast";
@@ -92,69 +92,27 @@ const CardProducts = ({ item }) => {
   };
 
   return (
-    <div className="container-center p-4 relative border-2 border-primary w-50 h-70 rounded-lg dark:bg-gray-500/20 flex flex-col items-center hover:shadow-[0px_0px_10px_6px_#ed40b1] transition-all duration-300 group overflow-hidden">
-      {isInCart ? (
-        <div
-          className={`absolute bottom-60 text-md flex items-center gap-2 transition-all duration-300`}
-        >
-          <FaCheck className={`text-green-500 transition-all duration-300`} />
-          <p className="font-semibold text-text dark:text-white transition-all duration-300">
-            In Cart
-          </p>
-        </div>
-      ) : (
-        <div
-          className={`absolute bottom-70 text-md flex items-center gap-2 transition-all duration-300`}
-        >
-          <FaCheck className={`text-green-500 transition-all duration-300`} />
-          <p className="font-semibold text-text dark:text-white transition-all duration-300">
-            In Cart
-          </p>
-        </div>
-      )}
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="flex flex-col items-center justify-center absolute z-50 top-10 left-50 group-hover:left-36 gap-10 transition-all duration-300"
-      >
-        <span
-          onClick={handleAddToCart}
-          className={`border-2 border-primary active:scale-90 p-2 bg-primary rounded-full hover:shadow-[0px_0px_10px_6px_#ed40b1] transition-all duration-300 cursor-pointer ${isInCart ? "bg-white pointer-events-none" : ""}`}
-        >
-          <FaCartPlus
-            className={`text-[22px] ${isInCart ? "text-primary" : "text-white"}`}
-          />
-        </span>
-        <span
-          onClick={handleAddToFav}
-          className={`border-2 border-primary  p-2  rounded-full active:scale-90 hover:shadow-[0px_0px_10px_6px_#ed40b1] transition-all duration-300 cursor-pointer ${isInFav ? "bg-white" : "bg-primary"}`}
-        >
-          <FaHeart className="text-secondry text-[22px]" />
-        </span>
-        <span
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
-          className="border-2 border-primary  p-2 bg-primary rounded-full active:scale-90 hover:shadow-[0px_0px_10px_6px_#ed40b1] transition-all duration-300 cursor-pointer"
-        >
-          <FaShare className="text-cyan-500 text-[22px]" />
-        </span>
-      </div>
+    <div className="container-center px-2 relative border-2 border-primary hover:shadow-[0px_0px_6px_5px_#ed40b1] w-50 h-70 rounded-lg dark:bg-gray-500/20 flex flex-col items-center transition-all duration-300 group overflow-hidden cursor-auto">
 
+
+    
+      <div onClick={() => handleAddToFav()} className="absolute right-4 top-3 text-lg text-secondry cursor-pointer ">
+        {isInFav ? (<FaHeart className="transition-all duration-300 hover:scale-120"/>) :(<FaRegHeart className="transition-all duration-300 hover:scale-120"/>) }
+      </div>
       <Link
         to={`/products/${item.id}`}
         className="w-full h-full flex flex-col items-center cursor-pointer"
       >
-        <div className="h-30 w-30 mt-4">
+        <div className="h-30 w-30">
           <img
             src={item.images[0]}
             alt={item.title}
-            className="h-full w-full rounded-lg scale-80"
+            className="h-full w-full rounded-lg scale-70"
           />
         </div>
 
         <div className="flex-col flex items-center">
-          <div className="flex items-center justify-center gap-1 mt-6 text-primary">
+          <div className="flex items-center justify-center gap-1  text-primary">
             <span>
               <FaStar />
             </span>
@@ -169,15 +127,18 @@ const CardProducts = ({ item }) => {
             </span>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h2 className="text-md line-clamp-1 font-semibold mt-4 bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent">
+            <h2 className="text-md line-clamp-1 mt-4 font-semibold bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent">
               {item.title.replace("-", " ")}
             </h2>
-            <p className="text-md mt-2 text-text dark:text-white font-bold tracking-wider">
+            <p className="text-md text-text mt-2 dark:text-white font-bold tracking-wider">
               ${item.price}
             </p>
           </div>
         </div>
       </Link>
+          <div>
+            <button onClick={() => handleAddToCart()} className={`-translate-y-3 font-semibold py-2 px-4 rounded-full text-sm mt-5 transition-all duration-300 hover:scale-110 cursor-pointer ${isInCart ? "pointer-events-none bg-linear-to-r from-primary to-secondry bg-clip-text text-transparent border-2 border-primary" : "bg-linear-to-r from-primary to-secondry text-white"} `}>{isInCart ? 'Added To Cart' : 'Add To Cart' }</button>
+          </div>
     </div>
   );
 };
